@@ -1,0 +1,54 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: nemo-fslabel\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#: fslabel:33 fslabel:43
+#, python-format
+msgid "Usage: %s (-d <device> | -m <m> mountpoint ) new_label"
+msgstr "Anwendung: %s (-d Gerät | -m <m> mountpunkt) neues_label"
+
+#: fslabel:57
+msgid "Couldn't find device for this volume!"
+msgstr "Konnte kein Gerät für dieses Volume finden!"
+
+#: fslabel:70
+#, python-format
+msgid "Unknown filesystem '%s', cannot set label!"
+msgstr "Unbekanntes Dateisystem '%s', kann Label nicht ändern!"
+
+#: fslabel:75
+msgid ""
+"There are still open files on this volume.\n"
+"Please close them and try again!"
+msgstr ""
+"Es sind noch offene Dateien auf diesem Volume.\n"
+"Bitte schließen und erneut Versuchen!"
+
+#: fslabel:83
+msgid "An error occured!"
+msgstr "Ein Fehler ist aufgetreten!"
+
+#: fslabel:87
+msgid "Renaming successful!"
+msgstr "Umbenennen erfolgreich!"
+
+#: fslabel-extension.py:17
+msgid "Enter new label:"
+msgstr "Neue Bezeichnung eingeben:"
+
+#: fslabel-extension.py:18 fslabel-extension.py:50
+msgid "Rename volume"
+msgstr "Volume umbenennen"
+
+#: fslabel-extension.py:51
+msgid "Renames the current volume"
+msgstr "Benennt dieses Volume um"

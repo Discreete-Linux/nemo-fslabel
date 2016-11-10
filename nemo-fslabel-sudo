@@ -1,0 +1,6 @@
+%users ALL=(ALL) NOPASSWD: /sbin/dosfslabel *
+%users ALL=(ALL) NOPASSWD: /sbin/ntfslabel *
+%users ALL=(ALL) NOPASSWD: /sbin/exfatlabel *
+%users ALL=(ALL) NOPASSWD: /sbin/e2label *
+%users ALL=(ALL) NOPASSWD: /sbin/blkid -c /dev/null -s TYPE -o value *
+%users ALL=(ALL) NOPASSWD: /usr/bin/lsof -w /media/*

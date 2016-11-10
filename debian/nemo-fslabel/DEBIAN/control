@@ -1,0 +1,12 @@
+Package: nemo-fslabel
+Version: 0.6
+Architecture: all
+Maintainer: Discreete Linux Team <info@discreete-linux.org>
+Installed-Size: 65
+Depends: nemo-python
+Section: utils
+Priority: extra
+Homepage: https://www.discreete-linux.org
+Description: Rename volumes on the desktop
+ This is a nemo extension which allows changing the label of any volume on
+ the desktop via context menu.

@@ -1,0 +1,58 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: nemo-fslabel 0.6-1\n"
+"Report-Msgid-Bugs-To: Discreete Linux Team <info@discreete-linux.org>\n"
+"POT-Creation-Date: 2016-08-03 13:23+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: fslabel:33 fslabel:43
+#, python-format
+msgid "Usage: %s (-d <device> | -m <m> mountpoint ) new_label"
+msgstr ""
+
+#: fslabel:57
+msgid "Couldn't find device for this volume!"
+msgstr ""
+
+#: fslabel:70
+#, python-format
+msgid "Unknown filesystem '%s', cannot set label!"
+msgstr ""
+
+#: fslabel:75
+msgid ""
+"There are still open files on this volume.\n"
+"Please close them and try again!"
+msgstr ""
+
+#: fslabel:83
+msgid "An error occured!"
+msgstr ""
+
+#: fslabel:87
+msgid "Renaming successful!"
+msgstr ""
+
+#: fslabel-extension.py:17
+msgid "Enter new label:"
+msgstr ""
+
+#: fslabel-extension.py:18 fslabel-extension.py:50
+msgid "Rename volume"
+msgstr ""
+
+#: fslabel-extension.py:51
+msgid "Renames the current volume"
+msgstr ""

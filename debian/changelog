@@ -1,0 +1,29 @@
+nemo-fslabel (0.6) jessie; urgency=low
+
+  * Ported to Nemo
+
+ -- Discreete Linux Team <info@discreete-linux.org>  Wed, 03 Aug 2016 12:24:30 +0200
+
+nautilus-fslabel (0.5-1) precise; urgency=low
+
+  * Ported to GTK3
+
+ -- UPR Team <info@privacy-cd.org>  Tue, 16 Jul 2013 15:22:59 +0200
+
+nautilus-fslabel (0.4-3) lucid; urgency=low
+
+  * Rewritten as nautilus extension
+
+ -- UPR Team <info@privacy-cd.org>  Tue, 25 Sep 2012 09:16:46 +0200
+
+nautilus-fslabel (0.3-1) lucid; urgency=low
+
+  * Fix localedir
+
+ -- UPR Team <info@privacy-cd.org>  Mon, 30 May 2011 08:45:11 +0200
+
+nautilus-fslabel (0.3) lucid; urgency=low
+
+  * Initial public release
+
+ -- UPR Team <info@privacy-cd.org>  Tue, 15 Feb 2011 14:32:59 +0100

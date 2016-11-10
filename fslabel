@@ -1,0 +1,99 @@
+#!/usr/bin/python
+# Encoding: UTF-8
+from gi.repository import Gtk
+import gettext
+import sys
+import os
+import getopt
+import subprocess
+
+gettext.install('nemo-fslabel', unicode=1)
+
+def show_error(message):
+    """ Display error messages """
+    dlg = Gtk.MessageDialog(type=Gtk.MessageType.ERROR, buttons=Gtk.ButtonsType.OK)
+    dlg.set_markup(message)
+    dlg.run()
+    dlg.destroy()
+    while Gtk.events_pending():
+        Gtk.main_iteration()
+    return
+
+def run():
+    mountpoint = ""
+    device = ""
+    found = 0
+
+    try:
+        options, remainder = getopt.getopt(sys.argv[1:], "hm:d:")
+    except getopt.GetoptError, err:
+        print str(err)
+        sys.exit(os.EX_USAGE)
+    for o, a in options:
+        if o == "-h":
+            print _("Usage: %s (-d <device> | -m <m> mountpoint ) new_label") % sys.argv[0]
+            sys.exit(0)
+        elif o == "-m":
+            mountpoint = a.rstrip('/')
+        elif o == "-d":
+            device = a
+        else:
+            assert False, "unhandled option"
+    newlabel = remainder[0]
+    if (len(newlabel) == 0) or ( not mountpoint and not device ):
+        print _("Usage: %s (-d <device> | -m <m> mountpoint ) new_label") % sys.argv[0]
+        sys.exit(os.EX_USAGE)
+            
+    if not device:
+        for line in open('/proc/mounts','r').readlines():
+            sp = line.split()
+            try:
+                if sp[1] == mountpoint:
+                    device = sp[0]
+                    found = 1
+                    break
+            except IndexError:
+                continue
+        if found == 0:
+            show_error(gettext.dgettext('nemo-fslabel', "Couldn't find device for this volume!"))
+            return
+        
+        fs=subprocess.Popen([ "/usr/bin/sudo", "/sbin/blkid", "-c", "/dev/null", "-s", "TYPE", "-o", "value", device ], stdout=subprocess.PIPE).communicate()[0].splitlines()[0]
+        if fs == "vfat":
+            cmd = ["/usr/bin/sudo", "/sbin/dosfslabel", device, newlabel]
+        elif fs == "exfat":
+            cmd = ["/usr/bin/sudo", "/sbin/exfatlabel", device, newlabel]
+        elif fs == "ntfs":
+            cmd = ["/usr/bin/sudo" ,"/sbin/ntfslabel", device, newlabel]
+        elif "ext" in fs:
+            cmd = ["/usr/bin/sudo", "/sbin/e2label", device, newlabel]
+        else:
+            show_error(gettext.dgettext('nemo-fslabel', "Unknown filesystem '%s', cannot set label!") % fs)
+            return
+            
+        openfiles = subprocess.Popen([ "/usr/bin/sudo", "/usr/bin/lsof", "-w", mountpoint ], stdout=subprocess.PIPE).communicate()[0]
+        if len(openfiles) > 0:
+            show_error(gettext.dgettext('nemo-fslabel', "There are still open files on this volume.\nPlease close them and try again!"))
+            return
+
+    try:
+        subprocess.check_call(["udisksctl", "unmount", "-b", device])
+        subprocess.check_call(cmd)
+        subprocess.check_call(["udisksctl", "mount", "-b", device])
+    except:
+        show_error(gettext.dgettext('nemo-fslabel', "An error occured!"))
+        print sys.exc_info()
+        return
+    dlg = Gtk.MessageDialog(type=Gtk.MessageType.INFO, buttons=Gtk.ButtonsType.OK)
+    dlg.set_markup(gettext.dgettext('nemo-fslabel', "Renaming successful!"))
+    dlg.set_position(Gtk.WindowPosition.CENTER)
+    dlg.run()
+    dlg.destroy()
+    while Gtk.events_pending():
+        Gtk.main_iteration()
+    return
+
+if __name__ == "__main__":
+    
+    run()
+

@@ -1,0 +1,5 @@
+9a25933472e90b586966cf1ed0917412  usr/bin/fslabel
+54fa73bcdec97bb693ef87257fe9b1bf  usr/share/doc/nemo-fslabel/changelog.gz
+cf94b433b929eb2f1604b2d3aa32fcaa  usr/share/doc/nemo-fslabel/copyright
+274d9d33b9757154dc125fd2d1d13cfa  usr/share/locale/de/LC_MESSAGES/nemo-fslabel.mo
+f0b69fb7ce2349e003583c1ce39e02a4  usr/share/nemo-python/extensions/fslabel-extension.py
